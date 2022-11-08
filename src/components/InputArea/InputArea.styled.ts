@@ -25,4 +25,11 @@ export const Styled = styled.div`
     margin-top: 5px;
     padding: 3px 10px;
   }
+
+  @media (max-width: 540px) {
+    input {
+      width: 90%;
+      font-size: 20px;
+    }
+  }
 `;

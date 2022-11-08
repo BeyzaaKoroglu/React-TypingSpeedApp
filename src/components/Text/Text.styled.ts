@@ -16,4 +16,9 @@ export const Styled = styled.div`
       background-color: white;
     }
   }
+
+  @media (max-width: 540px) {
+    height: 120px;
+    font-size: 24px;
+  }
 `;

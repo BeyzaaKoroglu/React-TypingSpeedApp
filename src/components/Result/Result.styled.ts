@@ -37,4 +37,9 @@ export const Styled = styled.div`
       background-color: white;
     }
   }
+
+  @media (max-width: 540px) {
+    width: 250px;
+    margin: auto;
+  }
 `;

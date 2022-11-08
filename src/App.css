@@ -3,3 +3,14 @@
   width: 70%;
   margin: auto;
 }
+
+@media (max-width: 820px) {
+  .App {
+    width: 80%;
+  }
+}
+@media (max-width: 540px) {
+  .App {
+    width: 90%;
+  }
+}
