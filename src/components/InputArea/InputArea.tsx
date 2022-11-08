@@ -1,15 +1,17 @@
 import { ChangeEvent, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   checkWord,
+  counter,
   goNextWord,
   refreshWords,
 } from "../../redux/words/wordsSlice";
+import Clock from "../Clock";
 import { Styled } from "./InputArea.styled";
 
 const InputArea = () => {
   const dispatch = useDispatch();
-  const [isHidden, setIsHidden] = useState<boolean>(false);
+  const timer = useSelector(counter);
   const [value, setValue] = useState<string>("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,18 +23,14 @@ const InputArea = () => {
       setValue(e.target.value);
     }
   };
-  const handleClickClock = () => setIsHidden(!isHidden);
-  const handleClickRefresh = () => dispatch(refreshWords());
+  const handleClickRefresh = () => {
+    setValue("");
+    dispatch(refreshWords());
+  };
   return (
     <Styled>
-      <input onChange={handleChange} value={value} />
-      <button
-        style={{ color: isHidden ? "#3c4d5c" : "white" }}
-        className="clock"
-        onClick={handleClickClock}
-      >
-        1:00
-      </button>
+      <input disabled={timer === 0} onChange={handleChange} value={value} />
+      <Clock />
       <button className="refresh" onClick={handleClickRefresh}>
         {"\u{21BB}"}
       </button>

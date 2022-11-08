@@ -18,11 +18,7 @@ export const Styled = styled.div`
     border-radius: 5px;
     margin-left: 10px;
   }
-  .clock {
-    background-color: #3c4d5c;
-    border: 1px solid #3c4d5c;
-    padding: 5px 10px;
-  }
+
   .refresh {
     background-color: #428bca;
     border: 1px solid #3d86c5;

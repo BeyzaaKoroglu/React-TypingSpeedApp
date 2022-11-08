@@ -6,6 +6,8 @@ export type WordsSliceType = {
   falseWords: number;
   keystroke: number;
   trueKeystroke: number;
+  counter: number;
+  isTyping: boolean;
 };
 
 export type Wordtype = {
