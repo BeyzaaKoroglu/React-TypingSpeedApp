@@ -22,6 +22,10 @@ const initialState: WordsSliceType = {
   language: "turkish",
   words: getWords("turkish"),
   currentWord: { index: 0, backgroundColor: "#dddddd" },
+  trueWords: 0,
+  falseWords: 0,
+  keystroke: 0,
+  trueKeystroke: 0,
 };
 
 export const wordsSlice = createSlice({
@@ -38,15 +42,25 @@ export const wordsSlice = createSlice({
       state.currentWord = { index: 0, backgroundColor: "#dddddd" };
     },
     checkWord: (state, action: PayloadAction<string>) => {
+      state.keystroke += 1;
       if (!state.words[state.currentWord.index].word.startsWith(action.payload))
         state.currentWord.backgroundColor = "red";
-      else if (state.currentWord.backgroundColor === "red")
-        state.currentWord.backgroundColor = "#dddddd";
+      else {
+        state.trueKeystroke += 1;
+        if (state.currentWord.backgroundColor === "red")
+          state.currentWord.backgroundColor = "#dddddd";
+      }
     },
     goNextWord: (state, action: PayloadAction<string>) => {
-      if (action.payload === state.words[state.currentWord.index].word)
+      state.keystroke += 1;
+      state.trueKeystroke += 1;
+      if (action.payload === state.words[state.currentWord.index].word) {
         state.words[state.currentWord.index].color = "green";
-      else state.words[state.currentWord.index].color = "red";
+        state.trueWords += 1;
+      } else {
+        state.words[state.currentWord.index].color = "red";
+        state.falseWords += 1;
+      }
 
       state.currentWord = {
         index: state.currentWord.index + 1,

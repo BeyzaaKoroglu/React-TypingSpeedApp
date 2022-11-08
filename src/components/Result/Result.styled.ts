@@ -19,10 +19,6 @@ export const Styled = styled.div`
       font-weight: bold;
       margin: 0;
     }
-    i {
-      font-size: 12px;
-      color: #8d9193;
-    }
   }
   ul {
     list-style-type: none;

@@ -2,6 +2,10 @@ export type WordsSliceType = {
   language: string;
   words: Array<Wordtype>;
   currentWord: CurrentWord;
+  trueWords: number;
+  falseWords: number;
+  keystroke: number;
+  trueKeystroke: number;
 };
 
 export type Wordtype = {
